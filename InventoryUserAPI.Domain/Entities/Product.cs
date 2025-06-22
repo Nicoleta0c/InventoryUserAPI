@@ -1,4 +1,6 @@
-﻿namespace InventoryUserAPI.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace InventoryUserAPI.Domain.Entities
 {
     public class Product
     {
@@ -12,6 +14,9 @@
 
         public string Brand { get; set; } = null!;
 
+        //simplificar respuesta sin crear DTOs (lo cambiare)
+
+        [JsonIgnore]
         public List<ProductVariation> Variations { get; set; } = new List<ProductVariation>();
     }
 }

@@ -37,7 +37,13 @@ namespace InventoryUserAPI.Application.Services
 
         public async Task<bool> UpdateAsync(Price price)
         {
-            _priceRepository.Update(price);
+           
+            var existing = await _priceRepository.GetByIdAsync(price.Id);
+            if (existing == null)
+                return false;
+
+            existing.Amount = price.Amount;
+
             try
             {
                 await _unitOfWork.SaveAsync();
@@ -48,6 +54,7 @@ namespace InventoryUserAPI.Application.Services
                 return false;
             }
         }
+
 
         public async Task<bool> DeleteAsync(int id)
         {

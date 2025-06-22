@@ -17,7 +17,6 @@ namespace InventoryUserAPI.API.Controllers
             _priceService = priceService;
         }
 
-       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Price>>> GetAll()
         {
@@ -25,7 +24,6 @@ namespace InventoryUserAPI.API.Controllers
             return Ok(prices);
         }
 
-       
         [HttpGet("{id}")]
         public async Task<ActionResult<Price>> GetById(int id)
         {
@@ -36,7 +34,6 @@ namespace InventoryUserAPI.API.Controllers
             return Ok(price);
         }
 
-        
         [HttpPost]
         public async Task<ActionResult<Price>> Create(Price price)
         {
@@ -44,7 +41,6 @@ namespace InventoryUserAPI.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = createdPrice.Id }, createdPrice);
         }
 
-        
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, Price price)
         {

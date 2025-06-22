@@ -31,6 +31,8 @@ namespace InventoryUserAPI.Infrastructure.Data
                 .HasForeignKey(pv => pv.ColorId);
 
 
+            //subiendo datos para pruebas
+
             modelBuilder.Entity<Color>().HasData(
                  new Color { Id = 1, Name = "Rojo" },
                  new Color { Id = 2, Name = "Azul" },
@@ -50,7 +52,6 @@ namespace InventoryUserAPI.Infrastructure.Data
 
 
 
-            //subiendo datos para pruebas
             modelBuilder.Entity<Price>().HasData(
                 new Price { Id = 1, Amount = 6200m },
                 new Price { Id = 2, Amount = 4500m },
