@@ -14,7 +14,7 @@ namespace InventoryUserAPI.Domain.Entities
 
         public string Brand { get; set; } = null!;
 
-        //simplificar respuesta sin crear DTOs (lo cambiare)
+        //simplificar respuesta sin crear DTOs
 
         [JsonIgnore]
         public List<ProductVariation> Variations { get; set; } = new List<ProductVariation>();

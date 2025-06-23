@@ -1,4 +1,4 @@
-﻿using InventoryUserAPI.Application.Interfaces;
+﻿using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

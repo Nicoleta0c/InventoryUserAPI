@@ -1,4 +1,4 @@
-﻿using InventoryUserAPI.Application.Interfaces;
+﻿using InventoryUserAPI.Application.Interfaces.IProducts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

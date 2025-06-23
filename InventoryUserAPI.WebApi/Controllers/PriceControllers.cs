@@ -1,4 +1,4 @@
-﻿using InventoryUserAPI.Application.Interfaces;
+﻿using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace InventoryUserAPI.API.Controllers
 
             var updated = await _priceService.UpdateAsync(price);
             if (!updated)
-                return StatusCode(500, "Error updating the price");
+                return StatusCode(500, "Error cargando el precio");
 
             return NoContent();
         }

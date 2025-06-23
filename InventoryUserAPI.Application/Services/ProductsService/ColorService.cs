@@ -1,11 +1,12 @@
 ﻿using InventoryUserAPI.Application.Interfaces;
+using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Application.Utils;
 using InventoryUserAPI.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InventoryUserAPI.Application.Services
+namespace InventoryUserAPI.Application.Services.ProductsService
 {
     public class ColorService : IColorService
     {

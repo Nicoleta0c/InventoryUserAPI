@@ -1,4 +1,5 @@
 ﻿using InventoryUserAPI.Application.Interfaces;
+using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Domain.Entities;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ public class ProductVariationService : IProductVariationService
     private ProductVariationDto ToDto(ProductVariation v) => new ProductVariationDto
     {
         Id = v.Id,
-        ProductName = v.Product?.Name ?? "",
+        Product = v.Product!,
         ColorName = v.Color?.Name ?? "",
         PriceAmount = v.Price?.Amount ?? 0m
     };
@@ -56,7 +57,7 @@ public class ProductVariationService : IProductVariationService
         return filtered.Select(ToDto).ToList();
     }
 
-    public async Task<(IEnumerable<string> VariationsDisplay, int TotalPages)> GetDisplayByColorAsync(int? colorId, int pageNumber, int pageSize)
+    public async Task<(IEnumerable<ProductVariationDto> VariationsDisplay, int TotalPages)> GetDisplayByColorAsync(int? colorId, int pageNumber, int pageSize)
     {
         var allVariations = await _variationRepository.GetAllWithDetailsAsync();
 
@@ -72,9 +73,7 @@ public class ProductVariationService : IProductVariationService
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize);
 
-        var displayList = pagedVariations
-            .Select(v => $"{v.Product.Name} {v.Color.Name} {v.Price.Amount}")
-            .ToList();
+        var displayList = pagedVariations.Select(ToDto).ToList();
 
         return (displayList, totalPages);
     }
@@ -120,7 +119,6 @@ public class ProductVariationService : IProductVariationService
     public async Task<IEnumerable<ProductVariationDto>> GetAllDtoAsync()
     {
         var variations = await _variationRepository.GetAllWithDetailsAsync();
-
         return variations.Select(ToDto).ToList();
     }
 }

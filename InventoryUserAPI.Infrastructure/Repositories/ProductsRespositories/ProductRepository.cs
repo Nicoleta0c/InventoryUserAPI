@@ -1,4 +1,4 @@
-﻿using InventoryUserAPI.Application.Interfaces;
+﻿using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Domain.Entities;
 using InventoryUserAPI.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InventoryUserAPI.Infrastructure.Repositories
+namespace InventoryUserAPI.Infrastructure.Repositories.ProductsRespositories
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {

@@ -1,9 +1,10 @@
 ﻿using InventoryUserAPI.Application.Interfaces;
+using InventoryUserAPI.Application.Interfaces.IProducts;
 using InventoryUserAPI.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InventoryUserAPI.Application.Services
+namespace InventoryUserAPI.Application.Services.ProductsService
 {
     public class ProductService : IProductService
     {
@@ -43,11 +44,12 @@ namespace InventoryUserAPI.Application.Services
             return variations.Select(v => new ProductVariationDto
             {
                 Id = v.Id,
-                ProductName = v.Product?.Name ?? string.Empty,
+                Product = v.Product!,
                 ColorName = v.Color?.Name ?? string.Empty,
                 PriceAmount = v.Price?.Amount ?? 0
             });
         }
+
 
         public async Task<Product> CreateAsync(Product product)
         {
